@@ -12,9 +12,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use('/', indexRouter);
 
 
-// catch 404 and forward to error handler
+// throw 404 errors for incorrect routes.
 app.use((req, res, next) => {
-  next(createError(404));
+  res.sendStatus(404);
 });
 
 // error handler
