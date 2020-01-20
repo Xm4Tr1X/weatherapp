@@ -1,13 +1,18 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { Layout } from 'antd'
+import WeatherSelector from './components/WeatherSelector'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-     
-      </header>
+    <div>
+      <Layout className="App">
+        <Layout.Header className="App-header">Weather App</Layout.Header>
+        <Layout.Content>
+          <WeatherSelector />
+        </Layout.Content>
+        {/* <Layout.Footer>Footer</Layout.Footer> */}
+      </Layout>
     </div>
   );
 }
