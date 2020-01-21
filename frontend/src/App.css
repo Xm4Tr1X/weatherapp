@@ -14,3 +14,6 @@
   color: white;
   text-align: center;
 }
+.App-content {
+  min-height: 90vh;
+}

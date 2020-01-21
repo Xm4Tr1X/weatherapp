@@ -4,7 +4,6 @@ import CityForm from './CityForm'
 export default class WeatherSelector extends React.Component {
     render() {
         return (<div>
-
             <Row>
                 <Col span={6}>
                     <div style={{ background: '#ECECEC', padding: '30px' }}>
@@ -14,9 +13,11 @@ export default class WeatherSelector extends React.Component {
                     </div>
                 </Col>
                 <Col span={18}>
-                    <Card title="Info">
+                    <div style={{ background: '#ECECEC', padding: '30px' }}>
+                        <Card title="Info">
 
-                    </Card>
+                        </Card>
+                    </div>
                 </Col>
             </Row>
         </div>)

@@ -7,9 +7,9 @@ const CityForm = Form.create({ name: 'city-form' })(
         constructor(props) {
             super(props);
             this.children = [];
-            children.push(<Option key={'detroit'}>Detroit</Option>);
-            children.push(<Option key={'manhattan'}>Manhattan</Option>);
-            children.push(<Option key={'dallas'}>Dallas</Option>);
+            this.children.push(<Option key={'detroit'}>Detroit</Option>);
+            this.children.push(<Option key={'manhattan'}>Manhattan</Option>);
+            this.children.push(<Option key={'dallas'}>Dallas</Option>);
         }
 
 
@@ -25,9 +25,9 @@ const CityForm = Form.create({ name: 'city-form' })(
                             style={{ width: '100%' }}
                             placeholder="Please select"
                             defaultValue={['detroit']}
-                            onChange={handleChange}
+                            onChange={this.handleChange}
                         >
-                            {children}
+                            {this.children}
                         </Select>,
                     </Form.Item>
                     <Form.Item>
