@@ -1,5 +1,8 @@
 import { Form, Button, Select } from 'antd'
 import React from 'react';
+import {connect} from 'react-redux';
+import {fetchForm} from '../actions/formAction';
+import {fetchInfo} from '../actions/infoAction'
 
 const { Option } = Select;
 const CityForm = Form.create({ name: 'city-form' })(
@@ -12,9 +15,13 @@ const CityForm = Form.create({ name: 'city-form' })(
             this.children.push(<Option key={'dallas'}>Dallas</Option>);
         }
 
+        componentDidMount(){
+            this.props.fetchForm()
+        }
 
-        handleChange = () => {
-
+        handleSubmit = (e) => {
+            e.preventDefault();
+            this.props.fetchInfo()
         }
         render() {
             return (
@@ -25,10 +32,9 @@ const CityForm = Form.create({ name: 'city-form' })(
                             style={{ width: '100%' }}
                             placeholder="Please select"
                             defaultValue={['detroit']}
-                            onChange={this.handleChange}
                         >
                             {this.children}
-                        </Select>,
+                        </Select>
                     </Form.Item>
                     <Form.Item>
                         <Button type="primary" htmlType="submit">
@@ -41,4 +47,8 @@ const CityForm = Form.create({ name: 'city-form' })(
     }
 );
 
-export default CityForm;
+const mapStateToProps = ({form}) => {
+    return {form: form.form}
+};
+
+export default connect(mapStateToProps, {fetchForm, fetchInfo})(CityForm);

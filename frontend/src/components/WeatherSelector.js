@@ -15,7 +15,7 @@ export default class WeatherSelector extends React.Component {
                 <Col span={18}>
                     <div style={{ background: '#ECECEC', padding: '30px' }}>
                         <Card title="Info">
-
+                            
                         </Card>
                     </div>
                 </Col>

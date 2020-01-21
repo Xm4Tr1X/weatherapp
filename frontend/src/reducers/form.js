@@ -7,14 +7,14 @@ const INIT_STATE = {
 const form = (state = INIT_STATE, action) => {
     switch (action.type) {
         case 'LOAD_FORM':
+            console.log('state =>', state);
             return {
                 ...state,
                 form: {
                     ...state.form,
-                    cities: action.payload.cities,
+                    cities: action.payload,
                     loading: false
                 },
-
             }
         
         default:

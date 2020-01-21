@@ -11,7 +11,7 @@ const cityList = ['dallas', 'detroit', 'manhattan'];
 router.get('/favicon.ico', (req, res) => res.sendStatus(204));
 
 
-router.get('/cities', (req, res)=> res.send(200).json(cityList));
+router.get('/cities', (req, res)=> res.status(200).json(cityList));
 router.get('/weather/:city', async (req, res) => {
   
   const { city } = req.params;
