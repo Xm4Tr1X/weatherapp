@@ -9,6 +9,15 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
+const setResponseHeaders = (req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin,access-token, Authorization, X-Requested-With, Content-Type, Accept");
+  res.header("Access-Control-Allow-Methods", "OPTIONS, GET, PUT, POST, DELETE");
+  next();
+};
+
+app.use(setResponseHeaders);
+
 app.use('/', indexRouter);
 
 

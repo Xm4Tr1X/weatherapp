@@ -1,28 +1,26 @@
 const INIT_STATE = {
-    single_city_data: {
-        location: {},
-        forecast: [],
+    city_list: {
+        data: [],
         loading: false
     }
 }
 const infodump = (state = INIT_STATE, action) => {
     switch (action.type) {
-        case 'FETCH_DATA':
+        case 'LOAD_INFO':
             return {
                 ...state,
-                single_city_data: {
-                    ...state.single_city_data,
+                city_list: {
+                    ...state.city_list,
                     loading: true
                 }
             }
         case 'FETCH_COMPLETE':
             return {
                 ...state,
-                single_city_data: {
-                    ...state.single_city_data,
-                    location: action.location,
-                    forecast: action.forecast,
-                    loading: false
+                city_list: {
+                    ...state.city_list,
+                    data: action.payload,
+                    loading:false
                 }
             }
         default:

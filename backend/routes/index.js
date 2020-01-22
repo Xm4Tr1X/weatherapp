@@ -11,19 +11,21 @@ const cityList = ['dallas', 'detroit', 'manhattan'];
 router.get('/favicon.ico', (req, res) => res.sendStatus(204));
 
 
-router.get('/cities', (req, res)=> res.status(200).json(cityList));
-router.get('/weather/:city', async (req, res) => {
-  
-  const { city } = req.params;
-  console.log(city);
-  cityList.indexOf(city) === -1 ? res.sendStatus(404) : '';
+router.get('/cities', (req, res) => res.status(200).json(cityList));
 
-  const query = { location: city, format: 'json' };
 
-  const result = await Api(query);
-  console.log('result => ', result)
+router.get('/weather', async (req, res) => {
 
-  res.status(200).json(result);
-
+  const { cities } = req.query;
+  if (cities === undefined) {
+    return res.sendStatus(422);
+  }
+  const cityData = [];
+  for (let i = 0; i < cities.length; i++) {
+    const query = { location: cities[i], format: 'json' };
+    const result = await Api(query);
+    cityData.push(result);
+  }
+  return res.status(200).json(cityData);
 });
 module.exports = router;
